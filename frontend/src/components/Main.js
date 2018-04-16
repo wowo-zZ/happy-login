@@ -10,16 +10,11 @@ class AppComponent extends React.Component {
 
   constructor(props) {
     super(props);
-    this.alert = this.alert.bind(this);
-  }
-
-  alert() {
-    alert(this.props);
   }
 
   render() {
     return (
-      <div className="index">
+      <div>
         <Button onClick={this.alert} >hello</Button>
       </div>
     );
