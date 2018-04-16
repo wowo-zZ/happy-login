@@ -1,5 +1,6 @@
 require('normalize.css/normalize.css');
-require('styles/App.css');
+require('styles/App.less');
+require('./Rem.js');
 
 import React from 'react';
 import { Button } from 'react-bootstrap';
