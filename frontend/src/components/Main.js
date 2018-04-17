@@ -4,7 +4,8 @@ require('./Rem.js');
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import Navigator from './Navigator';
+import Content from './Content';
 
 
 class AppComponent extends React.Component {
@@ -15,9 +16,14 @@ class AppComponent extends React.Component {
 
   render() {
     return (
-      <div>
-        <Button onClick={this.alert} >hello</Button>
-      </div>
+      <Router>
+        <div>
+          <Navigator/>
+          <Switch>
+            <Route to="" component={Content} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
