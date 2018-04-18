@@ -11,6 +11,7 @@ class Content extends React.Component {
   render() {
     return (
       <div>
+        content
       </div>
     );
   }
