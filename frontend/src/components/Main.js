@@ -3,9 +3,11 @@ require('styles/App.less');
 require('./Rem.js');
 
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import Navigator from './Navigator';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+
+// 自定义components
 import Content from './Content';
+import Login from './Login';
 
 
 class AppComponent extends React.Component {
@@ -18,9 +20,11 @@ class AppComponent extends React.Component {
     return (
       <Router>
         <div>
-          <Navigator/>
           <Switch>
-            <Route to="" component={Content} />
+            <Route exact to="/" component={Content} />
+            <Route to="/index" component={Content} />
+            <Route to="/login" component={Login} />
+            <Redirect to="/" />
           </Switch>
         </div>
       </Router>
