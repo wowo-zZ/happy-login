@@ -1,7 +1,16 @@
 import $ from 'jquery';
 
 const checkLogin = () => {
-  return false;
+  let userInfo = JSON.parse(
+    $.ajax({
+      url: '/api/getUserInfo',
+      method: 'GET',
+      async: false,
+      dataType: 'json'
+    }).responseText
+  );
+  console.log(userInfo);
+  return userInfo;
 };
 
 const pageIs = (path) => {
@@ -9,4 +18,4 @@ const pageIs = (path) => {
 };
 
 
-export { checkLogin, pageIs };
+export {checkLogin, pageIs};
