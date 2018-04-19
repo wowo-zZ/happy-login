@@ -8,12 +8,20 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 // 自定义components
 import Content from './Content';
 import Login from './Login';
+import { checkLogin, pageIs } from '../utils/ULogin';
 
 
 class AppComponent extends React.Component {
 
   constructor(props) {
     super(props);
+  }
+
+  componentWillMount() {
+    // 如果未登录，则跳转login
+    if (!checkLogin() && !(pageIs('/login'))) {
+      window.location.href = '/login';
+    }
   }
 
   render() {
