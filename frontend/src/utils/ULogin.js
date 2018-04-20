@@ -1,21 +1,31 @@
 import $ from 'jquery';
 
 const checkLogin = () => {
-  let userInfo = JSON.parse(
-    $.ajax({
-      url: '/api/getUserInfo',
-      method: 'GET',
-      async: false,
-      dataType: 'json'
-    }).responseText
-  );
-  console.log(userInfo);
-  return userInfo;
+  let userInfo = $.ajax({
+    url: '/api/getUserInfo',
+    method: 'GET',
+    async: false,
+    dataType: 'json'
+  }).responseText;
+  if (isJson(userInfo)) {
+    return JSON.parse(userInfo);
+  }
+  return false;
 };
 
 const pageIs = (path) => {
-  return window.location.pathname == path;
+  return window.location.pathname === path;
 };
 
+// 后期搞个package放进去
+const isJson = (str) => {
+  if (typeof str === 'string' && str.length > 0) {
+    let parsedObj = JSON.parse(str);
+    if (typeof parsedObj === 'object' && parsedObj) {
+      return true;
+    }
+  }
+  return false;
+};
 
-export {checkLogin, pageIs};
+export {checkLogin, pageIs, isJson};
