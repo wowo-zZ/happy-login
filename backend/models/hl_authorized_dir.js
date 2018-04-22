@@ -1,9 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var hl_authorized_dir = sequelize.define('hl_authorized_dir', {
-    id: DataTypes.NUMBER,
-    uid: DataTypes.NUMBER,
-    sid: DataTypes.NUMBER,
+    uid: DataTypes.INTEGER,
+    sid: DataTypes.INTEGER,
     dirs: DataTypes.STRING
   }, {});
   hl_authorized_dir.associate = function(models) {

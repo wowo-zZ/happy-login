@@ -1,0 +1,2 @@
+// 插入一些预定义的数据
+sequelize seed:generate --name hl_server_add

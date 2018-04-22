@@ -1,9 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var hl_authorizor = sequelize.define('hl_authorizor', {
-    id: DataTypes.NUMBER,
-    uid: DataTypes.NUMBER,
-    sid: DataTypes.NUMBER,
+    uid: DataTypes.INTEGER,
+    sid: DataTypes.INTEGER,
     authorize_type: DataTypes.STRING,
     expire_time: DataTypes.STRING
   }, {});

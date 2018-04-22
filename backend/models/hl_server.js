@@ -1,7 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var hl_server = sequelize.define('hl_server', {
-    id: DataTypes.NUMBER,
     ip: DataTypes.STRING,
     name: DataTypes.STRING,
     os_type: DataTypes.STRING,

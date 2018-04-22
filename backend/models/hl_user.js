@@ -1,7 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var hl_user = sequelize.define('hl_user', {
-    id: DataTypes.NUMBER,
     username: DataTypes.STRING,
     account_name: DataTypes.STRING,
     pub_key: DataTypes.STRING

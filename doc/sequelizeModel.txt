@@ -1,7 +1,7 @@
-sequelize model:generate --name hl_server --attributes id:number,ip:string,name:string,os_type:string,os_version:string
+sequelize model:generate --name hl_server --attributes ip:string,name:string,os_type:string,os_version:string
 
-sequelize model:generate --name hl_user --attributes id:number,username:string,account_name:string,pub_key:string
+sequelize model:generate --name hl_user --attributes username:string,account_name:string,pub_key:string
 
-sequelize model:generate --name hl_authorizor --attributes id:number,uid:number,sid:number,authorize_type:string,expire_time:string
+sequelize model:generate --name hl_authorizor --attributes uid:integer,sid:integer,authorize_type:string,expire_time:string
 
-sequelize model:generate --name hl_authorized_dir --attributes id:number,uid:number,sid:number,dirs:string
+sequelize model:generate --name hl_authorized_dir --attributes uid:integer,sid:integer,dirs:string

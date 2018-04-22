@@ -1,23 +1,23 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('hl_authorized_dirs', {
+    return queryInterface.createTable('hl_servers', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
-        type: Sequelize.NUMBER
+      ip: {
+        type: Sequelize.STRING
       },
-      uid: {
-        type: Sequelize.NUMBER
+      name: {
+        type: Sequelize.STRING
       },
-      sid: {
-        type: Sequelize.NUMBER
+      os_type: {
+        type: Sequelize.STRING
       },
-      dirs: {
+      os_version: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -31,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('hl_authorized_dirs');
+    return queryInterface.dropTable('hl_servers');
   }
 };

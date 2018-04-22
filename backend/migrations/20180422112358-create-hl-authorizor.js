@@ -1,23 +1,23 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('hl_users', {
+    return queryInterface.createTable('hl_authorizors', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
-        type: Sequelize.NUMBER
+      uid: {
+        type: Sequelize.INTEGER
       },
-      username: {
+      sid: {
+        type: Sequelize.INTEGER
+      },
+      authorize_type: {
         type: Sequelize.STRING
       },
-      account_name: {
-        type: Sequelize.STRING
-      },
-      pub_key: {
+      expire_time: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -31,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('hl_users');
+    return queryInterface.dropTable('hl_authorizors');
   }
 };
