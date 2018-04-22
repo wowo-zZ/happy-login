@@ -12,7 +12,8 @@
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
-    "mysql": "*"
+    "sequelize": "^4.37.6",
+    "sqlite3": "^4.0.0"
   },
   "devDependencies": {}
 }
