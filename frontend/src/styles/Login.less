@@ -10,8 +10,21 @@
 
   .logo {
     position: absolute;
-    left: 29%;
-    top: 21%;
+    @media screen and (max-width: 1920px) {
+      left: 35%;
+      top: 28%;
+    }
+
+    @media screen and (max-width: 1280px) {
+      left: 29%;
+      top: 21%;
+    }
+
+    @media screen and (max-width: 960px) {
+      left: 35%;
+      top: 28%;
+    }
+    width: 6.5rem;
   }
 
   .login-panel {
@@ -24,6 +37,16 @@
     top: 38%;
     box-shadow: #ffffff 0 0 0.2rem;
     border-radius: 0.07rem;
+
+    @media screen and (max-width: 1920px) {
+      left: 40%;
+      top: 43%;
+    }
+
+    @media screen and (max-width: 1280px) {
+      left: 36%;
+      top: 42%;
+    }
 
     .username {
       position: relative;

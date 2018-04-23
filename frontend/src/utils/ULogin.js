@@ -7,7 +7,7 @@ const checkLogin = () => {
     async: false,
     dataType: 'json'
   }).responseText;
-  if (isJson(userInfo)) {
+  if (isJson(userInfo) && JSON.parse(userInfo).length > 0) {
     return JSON.parse(userInfo);
   }
   return false;
