@@ -1,14 +1,18 @@
 import $ from 'jquery';
 
 const checkLogin = () => {
-  let userInfo = $.ajax({
+  let data = $.ajax({
     url: '/api/getUserInfo',
     method: 'GET',
     async: false,
     dataType: 'json'
   }).responseText;
-  if (isJson(userInfo) && JSON.parse(userInfo).length > 0) {
-    return JSON.parse(userInfo);
+  if (isJson(data)) {
+    console.log(JSON.parse(data));
+    let userInfo = JSON.parse(data);
+    if (userInfo.username) {
+      return userInfo;
+    }
   }
   return false;
 };
