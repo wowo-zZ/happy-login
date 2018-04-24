@@ -1,16 +1,27 @@
 let models  = require('../models');
 let md5 = require('md5');
 
-
 module.exports = {
   getUserInfo: function (req, res) {
-    if (!req.session.user) {
-      return '{}';
+    let result = {
+      flag: 1,
+      errorCode: 999,
+      data: null
+    };
+    if (req.session.user) {
+      result.flag = 1;
+      result.errorCode = 0;
+      result.data = req.session.user;
     }
-    res.send(JSON.stringify(req.session.user));
+    res.send(JSON.stringify(result));
   },
 
   login: function (req, res) {
+    let result = {
+      flag: 1,
+      errorCode: 999,
+      data: null
+    };
     let username = req.query.username;
     let password = req.query.password;
     models.hl_user.findOne({
@@ -20,8 +31,13 @@ module.exports = {
         password: md5(password)
       }
     }).then(userInfo => {
-      req.session.user = userInfo.dataValues;
-      res.send(JSON.stringify(userInfo.dataValues));
+      if (userInfo !== null) {
+        req.session.user = userInfo.dataValues;
+        result.flag = 1;
+        result.errorCode = 0;
+        result.data = req.session.user;
+      }
+      res.send(result);
     });
   }
 };
