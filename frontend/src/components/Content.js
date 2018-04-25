@@ -1,7 +1,7 @@
 require('styles/Content.less');
 
 import React from 'react';
-
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 // ant
 
 //react-bootstrap
@@ -16,17 +16,27 @@ class Content extends React.Component {
   render() {
     return (
       <Grid className="show-grid" fluid="true">
-        <Row className="show-row">
-          <Col className="side-bar" xs={3} md={2} lg={2}>
-
-          </Col>
-          <Col className="main-body" xs={9} md={6} lg={10}>
-            <Row className="body-header">
-            </Row>
-            <Row className="body-body">
-            </Row>
-          </Col>
-        </Row>
+        <Router>
+          <Row className="show-row">
+            <Col className="side-bar" xs={3} md={2} lg={2}>
+              <Link className="side-bar-link-button" to="/server">服务器</Link>
+              <Link className="side-bar-link-button" to="/user">用户</Link>
+              <Link className="side-bar-link-button" to="/authorize">授权</Link>
+            </Col>
+            <Col className="main-body" xs={9} md={6} lg={10}>
+              <Row className="body-header">
+                this is body-header, no useful
+              </Row>
+              <Row className="body-body">
+                <Switch>
+                  <Route path="/server" component={() => (<div>this is server form !</div>)}/>
+                  <Route path="/user" component={() => (<div>this is user form !</div>)}/>
+                  <Route path="/authorize" component={() => (<div>this is authorize form !</div>)}/>
+                </Switch>
+              </Row>
+            </Col>
+          </Row>
+        </Router>
       </Grid>
     );
   }
