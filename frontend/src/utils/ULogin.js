@@ -10,7 +10,7 @@ const checkLogin = () => {
   if (isJson(data)) {
     console.log(JSON.parse(data));
     let userInfo = JSON.parse(data);
-    if (userInfo.username) {
+    if (userInfo.data !== null && userInfo.data.username) {
       return userInfo;
     }
   }

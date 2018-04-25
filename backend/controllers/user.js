@@ -9,7 +9,7 @@ module.exports = {
       data: null
     };
     if (req.session.user) {
-      result.flag = 1;
+      result.flag = 0;
       result.errorCode = 0;
       result.data = req.session.user;
     }
@@ -22,8 +22,8 @@ module.exports = {
       errorCode: 999,
       data: null
     };
-    let username = req.query.username;
-    let password = req.query.password;
+    let username = req.body.username;
+    let password = req.body.password;
     models.hl_user.findOne({
       attributes: ['username', 'account_name', 'pub_key'],
       where: {
@@ -33,7 +33,7 @@ module.exports = {
     }).then(userInfo => {
       if (userInfo !== null) {
         req.session.user = userInfo.dataValues;
-        result.flag = 1;
+        result.flag = 0;
         result.errorCode = 0;
         result.data = req.session.user;
       }

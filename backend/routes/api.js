@@ -6,7 +6,7 @@ router.get('/getUserInfo', function(req, res, next) {
   user.getUserInfo(req, res);
 });
 
-router.get('/login', function(req, res, next) {
+router.post('/login', function(req, res, next) {
   user.login(req, res);
 });
 
