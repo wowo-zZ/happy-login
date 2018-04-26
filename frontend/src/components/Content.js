@@ -25,7 +25,7 @@ class Content extends React.Component {
             </Col>
             <Col className="main-body" xs={9} md={6} lg={10}>
               <Row className="body-header">
-                this is body-header, no useful
+
               </Row>
               <Row className="body-body">
                 <Switch>
