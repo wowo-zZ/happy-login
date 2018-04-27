@@ -7,6 +7,8 @@ import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 //react-bootstrap
 import {Grid, Row, Col} from 'react-bootstrap';
 
+import Server from './Server';
+
 class Content extends React.Component {
 
   constructor(props) {
@@ -28,10 +30,10 @@ class Content extends React.Component {
 
               </Row>
               <Row className="body-body">
-                <Switch>
-                  <Route path="/server" component={() => (<div>this is server form !</div>)}/>
-                  <Route path="/user" component={() => (<div>this is user form !</div>)}/>
-                  <Route path="/authorize" component={() => (<div>this is authorize form !</div>)}/>
+                <Switch className="body-switch">
+                  <Route path="/server" component={Server}/>
+                  <Route path="/user" component={() => (<div><span className="no-content-info">this is user form !</span></div>)}/>
+                  <Route path="/authorize" component={() => (<div><span className="no-content-info">this is authorize form !</span></div>)}/>
                 </Switch>
               </Row>
             </Col>
