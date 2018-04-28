@@ -13,23 +13,32 @@ class Server extends React.Component {
   }
 
   componentWillMount() {
+    let servers = null;
     $.ajax({
-      url: 'api/server/get',
+      url: 'api/getServer',
       method: 'POST',
+      async: false,
       data: {},
       dataType: 'json',
-      success: (function(res) {
-        this.setState(JSON.parse(res));
-      }).bind(this)
+      success: function(res) {
+        console.log(res);
+        servers = res.data;
+      }
+    });
+    console.log(servers);
+    this.setState({
+      servers: servers
     });
   }
 
   render() {
     let serverList = '';
     if (this.state.servers.length > 0) {
-      serverList = this.state.servers.map(function () {
+      serverList = this.state.servers.map(function (server) {
         return (
-          <div>aaa</div>
+          <div>
+            <ServerItem info={server} />
+          </div>
         );
       });
     } else {
