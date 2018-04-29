@@ -1,5 +1,8 @@
 import React from 'react';
 import $ from 'jquery';
+import Table from 'react-bootstrap/lib/Table';
+
+import ServerItem from './ServerItem';
 
 require('styles/Server.less');
 
@@ -20,7 +23,7 @@ class Server extends React.Component {
       async: false,
       data: {},
       dataType: 'json',
-      success: function(res) {
+      success: function (res) {
         console.log(res);
         servers = res.data;
       }
@@ -36,9 +39,7 @@ class Server extends React.Component {
     if (this.state.servers.length > 0) {
       serverList = this.state.servers.map(function (server) {
         return (
-          <div>
-            <ServerItem info={server} />
-          </div>
+          <ServerItem info={server}/>
         );
       });
     } else {
@@ -47,7 +48,17 @@ class Server extends React.Component {
 
     return (
       <div className="content">
-        {serverList}
+        <Table>
+          <thead>
+          <th>#</th>
+          <th>主机名称</th>
+          <th>OS类型</th>
+          <th>OS版本</th>
+          </thead>
+          <tbody>
+          {serverList}
+          </tbody>
+        </Table>
       </div>
     );
   }

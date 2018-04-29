@@ -7,6 +7,7 @@
     "clean": "rimraf dist/*",
     "copy": "copyfiles -f ./src/index.html ./src/favicon.ico ./src/resource/* ./dist",
     "dist": "npm run copy & webpack --env=dist",
+    "dev": "npm run copy & webpack --env=dev",
     "lint": "eslint ./src",
     "posttest": "npm run lint",
     "release:major": "npm version major && npm publish && git push --follow-tags",
@@ -56,6 +57,7 @@
     "open": "0.0.5",
     "phantomjs-prebuilt": "^2.0.0",
     "react-addons-test-utils": "^15.0.0",
+    "react-bootstrap": "^0.32.1",
     "react-hot-loader": "^1.2.9",
     "react-router-dom": "^4.2.2",
     "rimraf": "^2.4.3",
@@ -69,7 +71,6 @@
     "core-js": "^2.0.0",
     "normalize.css": "^4.0.0",
     "react": "^15.0.0",
-    "react-bootstrap": "^0.32.1",
     "react-dom": "^15.0.0"
   }
 }
