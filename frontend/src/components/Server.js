@@ -54,6 +54,7 @@ class Server extends React.Component {
           <th>主机名称</th>
           <th>OS类型</th>
           <th>OS版本</th>
+          <th>操作</th>
           </thead>
           <tbody>
           {serverList}
