@@ -15,10 +15,10 @@ class ServerItem extends React.Component {
   render() {
     return (
       <tr>
-        <td>{this.state.info.id}</td>
-        <td>{this.state.info.name}</td>
-        <td>{this.state.info.os_type}</td>
-        <td>{this.state.info.os_version}</td>
+        <td className="field">{this.state.info.id}</td>
+        <td className="field">{this.state.info.name}</td>
+        <td className="field">{this.state.info.os_type}</td>
+        <td className="field">{this.state.info.os_version}</td>
         <td>
           <Button>查看</Button>
           <Button>修改</Button>
