@@ -1,4 +1,5 @@
 import React from 'react';
+import {Router, Link} from 'react-router-dom';
 
 import Button from 'react-bootstrap/lib/Button';
 
@@ -12,6 +13,14 @@ class ServerItem extends React.Component {
     };
   }
 
+  del(id, event) {
+    event.preventDefault();
+    event.stopPropagation();
+    if (confirm('是否确定删除id为' + id +'的服务器？')) {
+      alert('删除成功');
+    }
+  }
+
   render() {
     return (
       <tr>
@@ -20,10 +29,10 @@ class ServerItem extends React.Component {
         <td className="field">{this.state.info.os_type}</td>
         <td className="field">{this.state.info.os_version}</td>
         <td>
-          <Button>查看</Button>
-          <Button>修改</Button>
-          <Button>授权</Button>
-          <Button>删除</Button>
+            <Link to={'/server/detail/' + this.state.info.id}>查看</Link>&nbsp;|&nbsp;
+            <Link to={'/server/modify/' + this.state.info.id}>修改</Link>&nbsp;|&nbsp;
+            <Link to={'/server/authorize/' + this.state.info.id}>授权</Link>&nbsp;|&nbsp;
+            <a onClick={this.del.bind(this, this.state.info.id)}>删除</a>
         </td>
       </tr>
     );
