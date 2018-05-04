@@ -31,9 +31,9 @@ class AppComponent extends React.Component {
       <Router>
         <div className="index">
           <Switch>
-            <Route exact path="/index" component={Content}/>
+            <Route path="/content" component={Content}/>
             <Route path="/login" component={Login}/>
-            <Redirect to="/index"/>
+            <Redirect to="/content"/>
           </Switch>
         </div>
       </Router>

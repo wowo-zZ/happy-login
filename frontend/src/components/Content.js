@@ -22,7 +22,7 @@ class Content extends React.Component {
         <Router>
           <Row className="show-row">
             <Col className="side-bar" xs={3} md={2} lg={2}>
-              <Link className="side-bar-link-button" to="/server">服务器</Link>
+              <Link className="side-bar-link-button" to="/content">服务器</Link>
               <Link className="side-bar-link-button" to="/user">用户</Link>
               <Link className="side-bar-link-button" to="/authorize">授权</Link>
             </Col>
@@ -32,10 +32,10 @@ class Content extends React.Component {
               </Row>
               <Row className="body-body">
                 <Switch className="body-switch">
-                  <Route exact path="/server" component={Server}/>
-                  <Route path="/server/detail/:id" component={ServerDetail}/>
-                  <Route path="/server/modify/:id" component={ServerDetail}/>
-                  <Route path="/server/authorize/:id" component={ServerDetail}/>
+                  <Route exact path="/content" component={Server}/>
+                  <Route path="/content/detail/:id" component={ServerDetail}/>
+                  <Route path="/content/modify/:id" component={ServerDetail}/>
+                  <Route path="/content/authorize/:id" component={ServerDetail}/>
                   <Route path="/user" component={() => (<div><span className="no-content-info">this is user form !</span></div>)}/>
                   <Route path="/authorize" component={() => (<div><span className="no-content-info">this is authorize form !</span></div>)}/>
                 </Switch>

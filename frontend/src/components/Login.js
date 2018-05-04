@@ -4,7 +4,7 @@ import React from 'react';
 import {Button} from 'react-bootstrap';
 import $ from 'jquery';
 
-import {checkLogin} from "../utils/ULogin";
+import {checkLogin} from '../utils/ULogin';
 
 class Login extends React.Component {
 
@@ -15,15 +15,15 @@ class Login extends React.Component {
 
   login() {
     $.ajax({
-      url: "/api/login",
-      method: "POST",
+      url: '/api/login',
+      method: 'POST',
       data: {username: $('.username-value').val(), password: $('.password-value').val()},
-      dataType: "json",
+      dataType: 'json',
       success: function(res) {
         if (res.flag !== 0) {
-          alert("登录失败");
+          alert('登录失败');
         } else {
-          window.location.href = "/";
+          window.location.href = '/';
         }
       }
     });
@@ -31,7 +31,7 @@ class Login extends React.Component {
 
   componentWillMount() {
     if (checkLogin()) {
-      window.location.href = '/index';
+      window.location.href = '/content';
     }
   }
 
