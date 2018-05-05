@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import {Link} from 'react-router-dom';
 
 class ServerDetail extends React.Component {
@@ -7,8 +8,26 @@ class ServerDetail extends React.Component {
     super(props);
 
     this.state = {
-      info: []
+      data: []
     };
+  }
+
+  componentWillMount() {
+    let data = [];
+    $.ajax({
+      url: '/api/server',
+      method: 'get',
+      data: {id: this.props.match.params.id},
+      dateType: 'json',
+      async: false,
+      success: function (response) {
+        response = JSON.parse(response);
+        data = response.data;
+      }
+    });
+    this.setState({
+      data: data
+    });
   }
 
   render() {

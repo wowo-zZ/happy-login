@@ -15,4 +15,8 @@ router.post('/getServer', function(req, res, next) {
   server.getServer(req, res);
 });
 
+router.get('/server', function(req, res, next) {
+  server.getServerById(req, res);
+});
+
 module.exports = router;

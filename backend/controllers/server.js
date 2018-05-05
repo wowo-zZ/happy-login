@@ -18,6 +18,21 @@ module.exports = {
 
   },
 
+  getServerById: function(req, res) {
+    let result = {
+      flag: 1,
+      errorCode: 999,
+      data: null
+    };
+    models.hl_server.findById(req.query.id).
+    then(function(response) {
+      result.flag = 0;
+      result.errorCode = 0;
+      result.data = response;
+      res.send(JSON.stringify(result));
+    });
+  },
+
   login: function (req, res) {
     let result = {
       flag: 1,
