@@ -18,7 +18,7 @@ class Content extends React.Component {
 
   render() {
     return (
-      <Grid className="show-grid" fluid="true">
+      <Grid className="show-grid" fluid={true}>
         <Router>
           <Row className="show-row">
             <Col className="side-bar" xs={3} md={2} lg={2}>

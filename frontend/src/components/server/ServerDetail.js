@@ -15,7 +15,7 @@ class ServerDetail extends React.Component {
   componentWillMount() {
     let data = [];
     $.ajax({
-      url: '/api/server',
+      url: '/api/server/get',
       method: 'get',
       data: {id: this.props.match.params.id},
       dateType: 'json',

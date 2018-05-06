@@ -18,17 +18,15 @@ class Server extends React.Component {
   componentWillMount() {
     let servers = null;
     $.ajax({
-      url: 'api/getServer',
+      url: 'api/server/list',
       method: 'POST',
       async: false,
       data: {},
       dataType: 'json',
       success: function (res) {
-        console.log(res);
         servers = res.data;
       }
     });
-    console.log(servers);
     this.setState({
       servers: servers
     });
@@ -39,7 +37,7 @@ class Server extends React.Component {
     if (this.state.servers.length > 0) {
       serverList = this.state.servers.map(function (server) {
         return (
-          <ServerItem info={server}/>
+          <ServerItem key={server.id} info={server}/>
         );
       });
     } else {
