@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import {Grid, Row} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 class ServerDetail extends React.Component {
@@ -32,16 +33,23 @@ class ServerDetail extends React.Component {
 
   render() {
     return (
-      <tr>
-        <td className="field">1</td>
-        <td className="field">2</td>
-        <td>
-            <Link to="/">查看</Link>
-            <Link to="/">查看</Link>
-            <Link to="/">查看</Link>
-            <Link to="/">查看</Link>
-        </td>
-      </tr>
+      <div>
+        <Link to="/content">&lt;&lt;返回</Link>
+        <Grid>
+          <Row>
+            <label>id:</label>{this.state.data.id}
+          </Row>
+          <Row>
+            <label>主机名称:</label>{this.state.data.name}
+          </Row>
+          <Row>
+            <label>OS类型:</label>{this.state.data.os_type}
+          </Row>
+          <Row>
+            <label>OS版本:</label>{this.state.data.os_version}
+          </Row>
+        </Grid>
+      </div>
     );
   }
 }
