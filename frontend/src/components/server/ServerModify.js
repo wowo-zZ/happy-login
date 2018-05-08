@@ -1,6 +1,8 @@
 import React from 'react';
 import {FormGroup, ControlLabel, FormControl, HelpBlock, Button, Checkbox, Radio} from 'react-bootstrap';
 
+import FieldGroup from '../common/FieldGroup';
+
 class ServerModify extends React.Component {
 
   constructor(props) {
@@ -20,16 +22,6 @@ class ServerModify extends React.Component {
 
   handleChange(e) {
     this.setState({ value: e.target.value });
-  }
-
-  FieldGroup({ id, label, help, ...props }) {
-    return (
-      <FormGroup controlId={id}>
-        <ControlLabel>{label}</ControlLabel>
-        <FormControl {...props} />
-        {help && <HelpBlock>{help}</HelpBlock>}
-      </FormGroup>
-    );
   }
 
   render() {

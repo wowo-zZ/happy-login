@@ -27,37 +27,41 @@ class Server extends React.Component {
         servers = res.data;
       }
     });
-    this.setState({
-      servers: servers
-    });
+    if (servers && servers.length > 0) {
+      this.setState({
+        servers: servers
+      });
+    }
   }
 
   render() {
     let serverList = '';
+    let content = '';
     if (this.state.servers.length > 0) {
       serverList = this.state.servers.map(function (server) {
         return (
           <ServerItem key={server.id} info={server}/>
         );
       });
+      content = <Table>
+        <thead>
+        <th>#</th>
+        <th>主机名称</th>
+        <th>OS类型</th>
+        <th>OS版本</th>
+        <th>操作</th>
+        </thead>
+        <tbody>
+        {serverList}
+        </tbody>
+      </Table>;
     } else {
-      serverList = <span className="no-content-info">暂时还没有服务器信息</span>
+      content = <span className="no-content-info">暂时还没有服务器信息</span>
     }
 
     return (
       <div className="content">
-        <Table>
-          <thead>
-          <th>#</th>
-          <th>主机名称</th>
-          <th>OS类型</th>
-          <th>OS版本</th>
-          <th>操作</th>
-          </thead>
-          <tbody>
-          {serverList}
-          </tbody>
-        </Table>
+        {content}
       </div>
     );
   }
