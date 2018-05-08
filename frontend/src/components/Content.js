@@ -1,15 +1,17 @@
 require('styles/Content.less');
 
 import React from 'react';
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
-// ant
+import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
 
 //react-bootstrap
-import {Grid, Row, Col} from 'react-bootstrap';
+import {Col, Grid, Row} from 'react-bootstrap';
 
 import Server from './Server';
 import ServerDetail from './server/ServerDetail';
 import ServerModify from './server/ServerModify';
+import ServerAdd from './server/ServerAdd';
+
+// ant
 
 class Content extends React.Component {
 
@@ -34,11 +36,14 @@ class Content extends React.Component {
               <Row className="body-body">
                 <Switch className="body-switch">
                   <Route exact path="/content" component={Server}/>
-                  <Route path="/content/detail/:id" component={ServerDetail}/>
-                  <Route path="/content/modify/:id" component={ServerModify}/>
-                  <Route path="/content/authorize/:id" component={ServerDetail}/>
-                  <Route path="/user" component={() => (<div><span className="no-content-info">this is user form !</span></div>)}/>
-                  <Route path="/authorize" component={() => (<div><span className="no-content-info">this is authorize form !</span></div>)}/>
+                  <Route path="/server/detail/:id" component={ServerDetail}/>
+                  <Route path="/server/modify/:id" component={ServerModify}/>
+                  <Route path="/server/authorize/:id" component={ServerDetail}/>
+                  <Route path="/server/add" component={ServerAdd}/>
+                  <Route path="/user"
+                         component={() => (<div><span className="no-content-info">this is user form !</span></div>)}/>
+                  <Route path="/authorize" component={() => (
+                    <div><span className="no-content-info">this is authorize form !</span></div>)}/>
                 </Switch>
               </Row>
             </Col>

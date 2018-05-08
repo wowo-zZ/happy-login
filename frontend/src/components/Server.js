@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
-import Table from 'react-bootstrap/lib/Table';
+import {Table} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 import ServerItem from './server/ServerItem';
 
@@ -61,6 +62,8 @@ class Server extends React.Component {
 
     return (
       <div className="content">
+        <Link to='/server/add'>新增服务器</Link>
+        <hr/>
         {content}
       </div>
     );

@@ -3,7 +3,7 @@ import {Button, Checkbox, ControlLabel, FormControl, FormGroup, Radio} from 'rea
 
 import FieldGroup from '../common/FieldGroup';
 
-class ServerModify extends React.Component {
+class ServerAdd extends React.Component {
 
   constructor(props) {
     super(props);
@@ -122,4 +122,4 @@ class ServerModify extends React.Component {
   }
 }
 
-export default ServerModify;
+export default ServerAdd;
