@@ -3,7 +3,7 @@ import {ControlLabel, FormControl, FormGroup, HelpBlock} from 'react-bootstrap';
 
 class FieldGroup extends React.Component {
 
-  constructor(props) {Ø
+  constructor(props) {
     super(props);
   }
 
