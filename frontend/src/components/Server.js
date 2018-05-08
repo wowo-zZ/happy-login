@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import Table from 'react-bootstrap/lib/Table';
 
-import ServerItem from './ServerItem';
+import ServerItem from './server/ServerItem';
 
 require('styles/Server.less');
 
