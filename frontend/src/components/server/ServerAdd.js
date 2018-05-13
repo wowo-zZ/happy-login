@@ -1,6 +1,7 @@
 import React from 'react';
-import {Button, Checkbox, ControlLabel, FormControl, FormGroup, Radio} from 'react-bootstrap';
+import {Button, ControlLabel, FormControl, FormGroup} from 'react-bootstrap';
 
+import '../../styles/ServerAdd.less';
 import FieldGroup from '../common/FieldGroup';
 
 class ServerAdd extends React.Component {
@@ -8,6 +9,7 @@ class ServerAdd extends React.Component {
   constructor(props) {
     super(props);
 
+    let OsTypeVersion = require('../../data/OsTypeVersion.json');
     this.state = {
       value: ''
     };
@@ -30,90 +32,38 @@ class ServerAdd extends React.Component {
     return (
       <form>
         <FieldGroup
-          id="formControlsText"
+          id="serverName"
           type="text"
-          label="正文"
-          placeholder="请输入正文"
+          label="主机名:"
+          placeholder="请输入主机名"
+          className="server-name"
         />
         <FieldGroup
-          id="formControlsEmail"
-          type="email"
-          label="邮件地址"
-          placeholder="请输入邮件"
+          id="formIP"
+          type="text"
+          label="主机IP:"
+          placeholder="请输入主机IP"
+          className="server-ip"
         />
-        <FieldGroup
-          id="formControlsPassword"
-          label="密码"
-          type="password"
-        />
-        <FieldGroup
-          id="formControlsFile"
-          type="file"
-          label="文件"
-          help="这里是块级别的帮助内容。"
-        />
-
-        <Checkbox checked readOnly>
-          Checkbox
-        </Checkbox>
-        <Radio checked readOnly>
-          Radio
-        </Radio>
-
-        <FormGroup>
-          <Checkbox inline>
-            1
-          </Checkbox>
-          {' '}
-          <Checkbox inline>
-            2
-          </Checkbox>
-          {' '}
-          <Checkbox inline>
-            3
-          </Checkbox>
-        </FormGroup>
-        <FormGroup>
-          <Radio inline>
-            1
-          </Radio>
-          {' '}
-          <Radio inline>
-            2
-          </Radio>
-          {' '}
-          <Radio inline>
-            3
-          </Radio>
-        </FormGroup>
-
-        <FormGroup controlId="formControlsSelect">
-          <ControlLabel>选择框</ControlLabel>
-          <FormControl componentClass="select" placeholder="select">
-            <option value="select">选择项</option>
-            <option value="other">...</option>
-          </FormControl>
-        </FormGroup>
-        <FormGroup controlId="formControlsSelectMultiple">
-          <ControlLabel>多选框</ControlLabel>
-          <FormControl componentClass="select" multiple>
-            <option value="select">多选项</option>
-            <option value="other">...</option>
-          </FormControl>
-        </FormGroup>
-
         <FormGroup controlId="formControlsTextarea">
-          <ControlLabel>文字区域</ControlLabel>
-          <FormControl componentClass="textarea" placeholder="textarea"/>
+          <ControlLabel>root秘钥:</ControlLabel>
+          <FormControl componentClass="textarea" placeholder="请输入该机器的root秘钥" />
         </FormGroup>
-
-        <FormGroup>
-          <ControlLabel>静态文本</ControlLabel>
-          <FormControl.Static>
-            email@example.com
-          </FormControl.Static>
+        <div className="clear-both"/>
+        <FormGroup controlId="osType">
+          <ControlLabel>操作系统:</ControlLabel>
+          <FormControl componentClass="select" placeholder="选择操作系统:">
+            <option value="centos">CentOS</option>
+            <option value="ubuntu">Ubuntu</option>
+          </FormControl>
         </FormGroup>
-
+        <div className="clear-both"/>
+        <FormGroup controlId="osVersion">
+          <ControlLabel>系统版本:</ControlLabel>
+          <FormControl componentClass="select" placeholder="选择系统版本:">
+          </FormControl>
+        </FormGroup>
+        <div className="clear-both"/>
         <Button type="submit">
           提交
         </Button>

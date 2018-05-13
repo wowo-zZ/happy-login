@@ -13,7 +13,9 @@ class FieldGroup extends React.Component {
       <FormGroup controlId={id}>
         <ControlLabel>{label}</ControlLabel>
         <FormControl  {...rest}/>
+        <div className="clear-both"/>
         {help && <HelpBlock>{help}</HelpBlock>}
+
       </FormGroup>
     );
   }
