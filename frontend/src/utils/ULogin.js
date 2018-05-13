@@ -1,8 +1,8 @@
-import $ from 'jquery';
+// import $ from 'jquery';
 
 const checkLogin = () => {
   return true;
-  let data = $.ajax({
+  /*let data = $.ajax({
     url: '/api/user/get',
     method: 'GET',
     async: false,
@@ -14,7 +14,7 @@ const checkLogin = () => {
       return userInfo;
     }
   }
-  return false;
+  return false;*/
 };
 
 const pageIs = (path) => {

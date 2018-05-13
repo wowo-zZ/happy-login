@@ -6,12 +6,14 @@ import FieldGroup from '../common/FieldGroup';
 
 class ServerAdd extends React.Component {
 
+
+
   constructor(props) {
     super(props);
-
-    let OsTypeVersion = require('../../data/OsTypeVersion.json');
+    this.OsTypeVersion = require('../../data/OsTypeVersion.json');
+    this.changeOsType = this.changeOsType.bind(this);
     this.state = {
-      value: ''
+      OsType: 'CentOS'
     };
   }
 
@@ -25,6 +27,12 @@ class ServerAdd extends React.Component {
   handleChange(e) {
     this.setState({
       value: e.target.value
+    });
+  }
+
+  changeOsType(e) {
+    this.setState({
+      OsType: e.target.value
     });
   }
 
@@ -52,15 +60,18 @@ class ServerAdd extends React.Component {
         <div className="clear-both"/>
         <FormGroup controlId="osType">
           <ControlLabel>操作系统:</ControlLabel>
-          <FormControl componentClass="select" placeholder="选择操作系统:">
-            <option value="centos">CentOS</option>
-            <option value="ubuntu">Ubuntu</option>
+          <FormControl onChange={this.changeOsType} componentClass="select" placeholder="选择操作系统:">
+            <option value="CentOS">CentOS</option>
+            <option value="Ubuntu">Ubuntu</option>
           </FormControl>
         </FormGroup>
         <div className="clear-both"/>
         <FormGroup controlId="osVersion">
           <ControlLabel>系统版本:</ControlLabel>
           <FormControl componentClass="select" placeholder="选择系统版本:">
+            {this.OsTypeVersion[this.state.OsType].map(function(OsVersion) {
+              return <option key={OsVersion} value={OsVersion}>{OsVersion}</option>
+            })}
           </FormControl>
         </FormGroup>
         <div className="clear-both"/>
