@@ -14,6 +14,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      sshKey: {
+        type: Sequelize.STRING
+      },
       os_type: {
         type: Sequelize.STRING
       },

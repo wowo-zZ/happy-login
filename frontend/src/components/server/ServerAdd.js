@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import {Button, ControlLabel, FormControl, FormGroup} from 'react-bootstrap';
 
 import '../../styles/ServerAdd.less';
@@ -7,11 +8,11 @@ import FieldGroup from '../common/FieldGroup';
 class ServerAdd extends React.Component {
 
 
-
   constructor(props) {
     super(props);
     this.OsTypeVersion = require('../../data/OsTypeVersion.json');
     this.changeOsType = this.changeOsType.bind(this);
+    this.submit = this.submit.bind(this);
     this.state = {
       OsType: 'CentOS'
     };
@@ -36,6 +37,34 @@ class ServerAdd extends React.Component {
     });
   }
 
+  submit(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    let serverName = $('#serverName').val(),
+      IP = $('#IP').val(),
+      sshKey = $('#sshKey').val(),
+      osType = $('#osType').val(),
+      osVersion = $('#osVersion').val();
+
+    $.ajax({
+      url: '/api/server/add',
+      method: 'POST',
+      data: {
+        'serverName': serverName,
+        'IP': IP,
+        'sshKey': sshKey,
+        'osType': osType,
+        'osVersion': osVersion
+      },
+      dataType: 'json',
+      success: function (res) {
+        console.log(res);
+        alert ('添加成功');
+      }
+    });
+  }
+
   render() {
     return (
       <form>
@@ -47,15 +76,15 @@ class ServerAdd extends React.Component {
           className="server-name"
         />
         <FieldGroup
-          id="formIP"
+          id="IP"
           type="text"
           label="主机IP:"
           placeholder="请输入主机IP"
           className="server-ip"
         />
-        <FormGroup controlId="formControlsTextarea">
+        <FormGroup controlId="sshKey">
           <ControlLabel>root秘钥:</ControlLabel>
-          <FormControl componentClass="textarea" placeholder="请输入该机器的root秘钥" />
+          <FormControl componentClass="textarea" placeholder="请输入该机器的root秘钥"/>
         </FormGroup>
         <div className="clear-both"/>
         <FormGroup controlId="osType">
@@ -69,13 +98,13 @@ class ServerAdd extends React.Component {
         <FormGroup controlId="osVersion">
           <ControlLabel>系统版本:</ControlLabel>
           <FormControl componentClass="select" placeholder="选择系统版本:">
-            {this.OsTypeVersion[this.state.OsType].map(function(OsVersion) {
+            {this.OsTypeVersion[this.state.OsType].map(function (OsVersion) {
               return <option key={OsVersion} value={OsVersion}>{OsVersion}</option>
             })}
           </FormControl>
         </FormGroup>
         <div className="clear-both"/>
-        <Button type="submit">
+        <Button type="submit" onClick={this.submit}>
           提交
         </Button>
       </form>

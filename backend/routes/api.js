@@ -7,6 +7,10 @@ router.get('/user/get', function(req, res, next) {
   user.getUserInfo(req, res);
 });
 
+router.post('/user/add', function(req, res, next) {
+  user.addUser(req, res);
+});
+
 router.post('/login', function(req, res, next) {
   user.login(req, res);
 });
@@ -18,5 +22,11 @@ router.post('/server/list', function(req, res, next) {
 router.get('/server/get', function(req, res, next) {
   server.getServerById(req, res);
 });
+
+router.post('/server/add', function(req, res, next) {
+  server.addServer(req, res);
+});
+
+
 
 module.exports = router;
