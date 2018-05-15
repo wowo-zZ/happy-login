@@ -35,7 +35,7 @@ class Content extends React.Component {
               </Row>
               <Row className="body-body">
                 <Switch className="body-switch">
-                  <Route exact path="/content" component={Server}/>
+                  <Route exact path="/server" component={Server}/>
                   <Route path="/server/detail/:id" component={ServerDetail}/>
                   <Route path="/server/modify/:id" component={ServerModify}/>
                   <Route path="/server/authorize/:id" component={ServerDetail}/>

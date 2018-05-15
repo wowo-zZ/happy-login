@@ -25,12 +25,6 @@ class ServerAdd extends React.Component {
     else if (length > 0) return 'error';
   }
 
-  handleChange(e) {
-    this.setState({
-      value: e.target.value
-    });
-  }
-
   changeOsType(e) {
     this.setState({
       OsType: e.target.value
@@ -58,10 +52,11 @@ class ServerAdd extends React.Component {
         'osVersion': osVersion
       },
       dataType: 'json',
-      success: function (res) {
+      success: (function (res) {
         console.log(res);
         alert ('添加成功');
-      }
+        this.props.history.push('/server');
+      }).bind(this)
     });
   }
 

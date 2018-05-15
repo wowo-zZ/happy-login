@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import {Link} from 'react-router-dom';
 
 class ServerItem extends React.Component {
@@ -15,7 +16,20 @@ class ServerItem extends React.Component {
     event.preventDefault();
     event.stopPropagation();
     if (confirm('是否确定删除id为' + id +'的服务器？')) {
-      alert('删除成功');
+      $.ajax({
+        url: '/server/delete',
+        method: 'POST',
+        data: {id: id},
+        dataType: 'JSON',
+        success: (function (res) {
+          if (res.success === 0) {
+            alert('删除成功');
+            this.props.history.push('/server');
+          } else {
+            alert('删除失败');
+          }
+        }).bind(this)
+      });
     }
   }
 
