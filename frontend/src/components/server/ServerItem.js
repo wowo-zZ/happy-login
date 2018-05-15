@@ -23,7 +23,6 @@ class ServerItem extends React.Component {
         dataType: 'JSON',
         success: (function (res) {
           if (res.flag === 0) {
-            alert('删除成功');
             // 这就是受控组件啊！
             this.props.refresh();
           } else {

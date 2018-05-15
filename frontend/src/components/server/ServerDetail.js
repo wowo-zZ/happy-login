@@ -34,7 +34,7 @@ class ServerDetail extends React.Component {
   render() {
     return (
       <div>
-        <Link to="/content">&lt;&lt;返回</Link>
+        <Link to="/server">&lt;&lt;返回</Link>
         <Grid>
           <Row>
             <label>id:</label>{this.state.data.id}
