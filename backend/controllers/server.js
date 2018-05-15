@@ -46,6 +46,29 @@ module.exports = {
     });
   },
 
+  delServer: function (req, res) {
+    let result = {
+      flag: 1,
+      errorCode: 999,
+      data: null
+    };
+    let id = req.body.id;
+
+    models.hl_server.destroy({
+      where: {
+        id: id
+      },
+      force: false
+    }).then(rs => {
+      if (rs !== null) {
+        result.flag = 0;
+        result.errorCode = 0;
+        result.data = id;
+      }
+      res.send(result);
+    });
+  },
+
   getServerById: function(req, res) {
     let result = {
       flag: 1,

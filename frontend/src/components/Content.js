@@ -25,7 +25,7 @@ class Content extends React.Component {
         <Router>
           <Row className="show-row">
             <Col className="side-bar" xs={3} md={2} lg={2}>
-              <Link className="side-bar-link-button" to="/content">服务器</Link>
+              <Link className="side-bar-link-button" to="/server">服务器</Link>
               <Link className="side-bar-link-button" to="/user">用户</Link>
               <Link className="side-bar-link-button" to="/authorize">授权</Link>
             </Col>

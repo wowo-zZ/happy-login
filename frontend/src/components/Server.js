@@ -11,12 +11,14 @@ class Server extends React.Component {
   constructor(props) {
     super(props);
 
+    this.refreshServerList = this.refreshServerList.bind(this);
+
     this.state = {
       servers: []
     };
   }
 
-  componentWillMount() {
+  refreshServerList() {
     let servers = null;
     $.ajax({
       url: 'api/server/list',
@@ -35,15 +37,19 @@ class Server extends React.Component {
     }
   }
 
+  componentWillMount() {
+    this.refreshServerList();
+  }
+
   render() {
     let serverList = '';
     let content = '';
     if (this.state.servers.length > 0) {
-      serverList = this.state.servers.map(function (server) {
+      serverList = this.state.servers.map((function (server) {
         return (
-          <ServerItem key={server.id} info={server}/>
+          <ServerItem key={server.id} info={server} refresh={this.refreshServerList}/>
         );
-      });
+      }).bind(this));
       content = <Table>
         <thead>
         <th>#</th>

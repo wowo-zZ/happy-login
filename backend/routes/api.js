@@ -27,6 +27,10 @@ router.post('/server/add', function(req, res, next) {
   server.addServer(req, res);
 });
 
+router.post('/server/delete', function(req, res, next) {
+  server.delServer(req, res);
+});
+
 
 
 module.exports = router;

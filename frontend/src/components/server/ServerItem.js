@@ -17,14 +17,15 @@ class ServerItem extends React.Component {
     event.stopPropagation();
     if (confirm('是否确定删除id为' + id +'的服务器？')) {
       $.ajax({
-        url: '/server/delete',
+        url: '/api/server/delete',
         method: 'POST',
         data: {id: id},
         dataType: 'JSON',
         success: (function (res) {
-          if (res.success === 0) {
+          if (res.flag === 0) {
             alert('删除成功');
-            this.props.history.push('/server');
+            // 这就是受控组件啊！
+            this.props.refresh();
           } else {
             alert('删除失败');
           }
