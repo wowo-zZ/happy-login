@@ -10,6 +10,7 @@ import Server from './Server';
 import ServerDetail from './server/ServerDetail';
 import ServerModify from './server/ServerModify';
 import ServerAdd from './server/ServerAdd';
+import Welcome from './Welcome';
 
 // ant
 
@@ -36,6 +37,7 @@ class Content extends React.Component {
               <Row className="body-body">
                 <Switch className="body-switch">
                   <Route exact path="/server" component={Server}/>
+                  <Route exact path="/welcome" component={Welcome}/>
                   <Route path="/server/detail/:id" component={ServerDetail}/>
                   <Route path="/server/modify/:id" component={ServerModify}/>
                   <Route path="/server/authorize/:id" component={ServerDetail}/>
