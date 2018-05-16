@@ -16,24 +16,38 @@ module.exports = {
     res.send(JSON.stringify(result));
   },
 
+  listUsers: function(req, res) {
+    let result = {
+      flag: 1,
+      errorCode: 999,
+      data: null
+    };
+    models.hl_user.findAll().then(users => {
+      if (users != null) {
+        result.flag = 0;
+        result.errorCode = 0;
+        result.data = users;
+      }
+      res.send(result);
+    });
+  },
+
   addUser: function (req, res) {
     let result = {
       flag: 1,
       errorCode: 999,
       data: null
     };
-    let serverName = req.body.serverName;
-    let IP = req.body.IP;
-    let sshKey = req.body.sshKey;
-    let osType = req.body.osType;
-    let osVersion = req.body.osVersion;
+    let username = req.body.username;
+    let password = req.body.password;
+    let accountName = req.body.accountName;
+    let pubKey = req.body.pubKey;
 
     models.hl_user.create({
-      'ip': IP,
-      'serverName': serverName,
-      'sshKey': sshKey,
-      'osType': osType,
-      'osVersion': osVersion,
+      username: username,
+      password: password,
+      account_name: accountName,
+      pub_key: pubKey
     }).then(id => {
       if (id !== null) {
         result.flag = 0;

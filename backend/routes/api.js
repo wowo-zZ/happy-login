@@ -35,5 +35,25 @@ router.post('/server/modify', function(req, res, next) {
   server.modifyServer(req, res);
 });
 
+router.get('/user/list', function(req, res, next) {
+  user.listUsers(req, res);
+});
+
+router.get('/user/get', function(req, res, next) {
+  user.getUser(req, res);
+});
+
+router.post('/user/add', function(req, res, next) {
+  user.addUser(req, res);
+});
+
+router.post('/user/delete', function(req, res, next) {
+  user.delUser(req, res);
+});
+
+router.post('/User/modify', function(req, res, next) {
+  user.modifyUser(req, res);
+});
+
 
 module.exports = router;

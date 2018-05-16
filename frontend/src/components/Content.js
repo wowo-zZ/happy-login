@@ -6,11 +6,17 @@ import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
 //react-bootstrap
 import {Col, Grid, Row} from 'react-bootstrap';
 
-import User from './User';
 import Server from './Server';
 import ServerDetail from './server/ServerDetail';
 import ServerModify from './server/ServerModify';
 import ServerAdd from './server/ServerAdd';
+
+
+import User from './User';
+import UserDetail from './user/UserDetail';
+import UserModify from './user/UserModify';
+import UserAdd from './user/UserAdd';
+
 import Welcome from './Welcome';
 
 // ant
@@ -47,6 +53,10 @@ class Content extends React.Component {
 
                   // user
                   <Route path="/user" component={User}/>
+                  <Route path="/user/detail/:id" component={UserDetail}/>
+                  <Route path="/user/modify/:id" component={UserModify}/>
+                  <Route path="/user/authorize/:id" component={UserDetail}/>
+                  <Route path="/user/add" component={UserAdd}/>
 
                   // authorize
                   <Route path="/authorize" component={() => (

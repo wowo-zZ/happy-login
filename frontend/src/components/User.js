@@ -1,8 +1,9 @@
 import React from 'react';
 import $ from 'jquery';
 import Table from 'react-bootstrap/lib/Table';
+import {Link} from 'react-router-dom';
 
-import UserItem from './UserItem';
+import UserItem from './user/UserItem';
 
 require('styles/User.less');
 
@@ -10,28 +11,31 @@ class User extends React.Component {
   constructor(props) {
     super(props);
 
+    this.refreshUserList = this.refreshUserList.bind(this);
+
     this.state = {
-      servers: []
+      users: []
     };
   }
 
-  componentWillMount() {
+  refreshUserList() {
     let users = null;
     $.ajax({
-      url: 'api/getUser',
-      method: 'POST',
+      url: 'api/user/list',
+      method: 'get',
       async: false,
-      data: {},
       dataType: 'json',
       success: function (res) {
-        console.log(res);
         users = res.data;
       }
     });
-    console.log(users);
     this.setState({
       users: users
     });
+  }
+
+  componentWillMount() {
+    this.refreshUserList();
   }
 
   render() {
@@ -39,7 +43,7 @@ class User extends React.Component {
     if (this.state.users.length > 0) {
       userList = this.state.users.map(function (user) {
         return (
-          <UserItem info={user}/>
+          <UserItem info={user} refresh={this.refreshServerList}/>
         );
       });
     } else {
@@ -48,6 +52,7 @@ class User extends React.Component {
 
     return (
       <div className="content">
+        <Link to='/user/add'>新增用户</Link>
         <Table>
           <thead>
           <th>#</th>
