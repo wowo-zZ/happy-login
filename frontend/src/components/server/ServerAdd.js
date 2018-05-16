@@ -52,8 +52,7 @@ class ServerAdd extends React.Component {
         'osVersion': osVersion
       },
       dataType: 'json',
-      success: (function (res) {
-        console.log(res);
+      success: (function () {
         alert ('添加成功');
         this.props.history.push('/server');
       }).bind(this)

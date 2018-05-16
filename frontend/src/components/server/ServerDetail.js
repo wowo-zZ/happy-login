@@ -43,6 +43,9 @@ class ServerDetail extends React.Component {
             <label>主机名称:</label>{this.state.data.name}
           </Row>
           <Row>
+            <label>ssh key:</label>{this.state.data.sshKey}
+          </Row>
+          <Row>
             <label>OS类型:</label>{this.state.data.os_type}
           </Row>
           <Row>

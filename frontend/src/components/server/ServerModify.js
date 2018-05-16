@@ -87,9 +87,8 @@ class ServerModify extends React.Component {
         'osVersion': osVersion
       },
       dataType: 'json',
-      success: (function (res) {
-        console.log(res);
-        alert ('添加成功');
+      success: (function () {
+        alert ('修改成功');
         this.props.history.push('/server');
       }).bind(this)
     });
