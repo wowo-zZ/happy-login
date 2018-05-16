@@ -26,14 +26,12 @@ module.exports = {
     };
     let serverName = req.body.serverName;
     let IP = req.body.IP;
-    let sshKey = req.body.sshKey;
     let osType = req.body.osType;
     let osVersion = req.body.osVersion;
 
     models.hl_server.create({
       'ip': IP,
       'name': serverName,
-      'sshKey': sshKey,
       'os_type': osType,
       'os_version': osVersion,
     }).then(id => {
@@ -78,14 +76,12 @@ module.exports = {
     let id = req.body.id;
     let serverName = req.body.serverName;
     let IP = req.body.IP;
-    let sshKey = req.body.sshKey;
     let osType = req.body.osType;
     let osVersion = req.body.osVersion;
 
     models.hl_server.update({
       'ip': IP,
       'name': serverName,
-      'sshKey': sshKey,
       'os_type': osType,
       'os_version': osVersion,
     }, {

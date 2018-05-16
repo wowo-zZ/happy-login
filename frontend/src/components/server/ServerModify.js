@@ -16,8 +16,7 @@ class ServerModify extends React.Component {
       OsType: 'CentOS',
       OsVersion: '',
       serverName: '',
-      IP: '',
-      sshKey: ''
+      IP: ''
     };
   }
 
@@ -33,8 +32,7 @@ class ServerModify extends React.Component {
             OsType: res.data.os_type,
             OsVersion: res.data.os_version,
             serverName: res.data.name,
-            IP: res.data.ip,
-            sshKey: res.data.sshKey
+            IP: res.data.ip
           }
         );
       }).bind(this)
@@ -71,7 +69,6 @@ class ServerModify extends React.Component {
     let id = $('#id').val(),
       serverName = $('#serverName').val(),
       IP = $('#IP').val(),
-      sshKey = $('#sshKey').val(),
       osType = $('#osType').val(),
       osVersion = $('#osVersion').val();
 
@@ -82,7 +79,6 @@ class ServerModify extends React.Component {
         'id': id,
         'serverName': serverName,
         'IP': IP,
-        'sshKey': sshKey,
         'osType': osType,
         'osVersion': osVersion
       },
@@ -114,10 +110,6 @@ class ServerModify extends React.Component {
           className="server-ip"
           defaultValue={this.state.IP}
         />
-        <FormGroup controlId="sshKey">
-          <ControlLabel>root秘钥:</ControlLabel>
-          <FormControl componentClass="textarea" placeholder="请输入该机器的root秘钥" defaultValue={this.state.sshKey}/>
-        </FormGroup>
         <div className="clear-both"/>
         <FormGroup controlId="osType">
           <ControlLabel>操作系统:</ControlLabel>

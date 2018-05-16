@@ -37,7 +37,6 @@ class ServerAdd extends React.Component {
 
     let serverName = $('#serverName').val(),
       IP = $('#IP').val(),
-      sshKey = $('#sshKey').val(),
       osType = $('#osType').val(),
       osVersion = $('#osVersion').val();
 
@@ -47,7 +46,6 @@ class ServerAdd extends React.Component {
       data: {
         'serverName': serverName,
         'IP': IP,
-        'sshKey': sshKey,
         'osType': osType,
         'osVersion': osVersion
       },
@@ -76,10 +74,6 @@ class ServerAdd extends React.Component {
           placeholder="请输入主机IP"
           className="server-ip"
         />
-        <FormGroup controlId="sshKey">
-          <ControlLabel>root秘钥:</ControlLabel>
-          <FormControl componentClass="textarea" placeholder="请输入该机器的root秘钥"/>
-        </FormGroup>
         <div className="clear-both"/>
         <FormGroup controlId="osType">
           <ControlLabel>操作系统:</ControlLabel>

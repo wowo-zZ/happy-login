@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
 //react-bootstrap
 import {Col, Grid, Row} from 'react-bootstrap';
 
+import User from './User';
 import Server from './Server';
 import ServerDetail from './server/ServerDetail';
 import ServerModify from './server/ServerModify';
@@ -36,14 +37,18 @@ class Content extends React.Component {
               </Row>
               <Row className="body-body">
                 <Switch className="body-switch">
+                  // server
                   <Route exact path="/server" component={Server}/>
                   <Route exact path="/welcome" component={Welcome}/>
                   <Route path="/server/detail/:id" component={ServerDetail}/>
                   <Route path="/server/modify/:id" component={ServerModify}/>
                   <Route path="/server/authorize/:id" component={ServerDetail}/>
                   <Route path="/server/add" component={ServerAdd}/>
-                  <Route path="/user"
-                         component={() => (<div><span className="no-content-info">this is user form !</span></div>)}/>
+
+                  // user
+                  <Route path="/user" component={User}/>
+
+                  // authorize
                   <Route path="/authorize" component={() => (
                     <div><span className="no-content-info">this is authorize form !</span></div>)}/>
                 </Switch>

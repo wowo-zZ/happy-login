@@ -33,6 +33,7 @@ class AppComponent extends React.Component {
           <Switch>
             <Route exact path="/welcome" component={Content}/>
             <Route path="/server" component={Content}/>
+            <Route path="/user" component={Content}/>
             <Route path="/login" component={Login}/>
             <Redirect to="/welcome"/>
           </Switch>
