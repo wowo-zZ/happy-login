@@ -69,6 +69,37 @@ module.exports = {
     });
   },
 
+  modifyServer(req, res) {
+    let result = {
+      flag: 1,
+      errorCode: 999,
+      data: null
+    };
+    let id = req.body.id;
+    let serverName = req.body.serverName;
+    let IP = req.body.IP;
+    let sshKey = req.body.sshKey;
+    let osType = req.body.osType;
+    let osVersion = req.body.osVersion;
+
+    models.hl_server.update({
+      'ip': IP,
+      'name': serverName,
+      'sshKey': sshKey,
+      'os_type': osType,
+      'os_version': osVersion,
+    }, {
+      where: {'id': id}
+    }).then(rs => {
+      if (rs !== null) {
+        result.flag = 0;
+        result.errorCode = 0;
+        result.data = id;
+      }
+      res.send(result);
+    });
+  },
+
   getServerById: function(req, res) {
     let result = {
       flag: 1,

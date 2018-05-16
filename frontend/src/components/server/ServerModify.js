@@ -11,6 +11,7 @@ class ServerModify extends React.Component {
     this.OsTypeVersion = require('../../data/OsTypeVersion.json');
     this.changeOsType = this.changeOsType.bind(this);
     this.loadServer = this.loadServer.bind(this);
+    this.submit = this.submit.bind(this);
     this.state = {
       OsType: 'CentOS',
       OsVersion: '',
@@ -63,16 +64,48 @@ class ServerModify extends React.Component {
     });
   }
 
+  submit(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    let id = $('#id').val(),
+      serverName = $('#serverName').val(),
+      IP = $('#IP').val(),
+      sshKey = $('#sshKey').val(),
+      osType = $('#osType').val(),
+      osVersion = $('#osVersion').val();
+
+    $.ajax({
+      url: '/api/server/modify',
+      method: 'POST',
+      data: {
+        'id': id,
+        'serverName': serverName,
+        'IP': IP,
+        'sshKey': sshKey,
+        'osType': osType,
+        'osVersion': osVersion
+      },
+      dataType: 'json',
+      success: (function (res) {
+        console.log(res);
+        alert ('添加成功');
+        this.props.history.push('/server');
+      }).bind(this)
+    });
+  }
+
   render() {
     return (
       <form>
+        <input type="hidden" id="id" value={this.props.match.params.id} />
         <FieldGroup
           id="serverName"
           type="text"
           label="主机名:"
           placeholder="请输入主机名"
           className="server-name"
-          value={this.state.serverName}
+          defaultValue={this.state.serverName}
         />
         <FieldGroup
           id="IP"
@@ -80,16 +113,16 @@ class ServerModify extends React.Component {
           label="主机IP:"
           placeholder="请输入主机IP"
           className="server-ip"
-          value={this.state.IP}
+          defaultValue={this.state.IP}
         />
         <FormGroup controlId="sshKey">
           <ControlLabel>root秘钥:</ControlLabel>
-          <FormControl componentClass="textarea" placeholder="请输入该机器的root秘钥" value={this.state.sshKey}/>
+          <FormControl componentClass="textarea" placeholder="请输入该机器的root秘钥" defaultValue={this.state.sshKey}/>
         </FormGroup>
         <div className="clear-both"/>
         <FormGroup controlId="osType">
           <ControlLabel>操作系统:</ControlLabel>
-          <FormControl onChange={this.changeOsType} componentClass="select" value={this.state.OsType}>
+          <FormControl onChange={this.changeOsType} componentClass="select" defaultValue={this.state.OsType}>
             <option value="CentOS">CentOS</option>
             <option value="Ubuntu">Ubuntu</option>
           </FormControl>
@@ -97,14 +130,14 @@ class ServerModify extends React.Component {
         <div className="clear-both"/>
         <FormGroup controlId="osVersion">
           <ControlLabel>系统版本:</ControlLabel>
-          <FormControl componentClass="select" value={this.state.OsVersion}>
+          <FormControl componentClass="select" defaultValue={this.state.OsVersion}>
             {this.OsTypeVersion[this.state.OsType].map(function (OsVersion) {
               return <option key={OsVersion} value={OsVersion}>{OsVersion}</option>
             })}
           </FormControl>
         </FormGroup>
         <div className="clear-both"/>
-        <Button type="submit">
+        <Button type="submit" onClick={this.submit}>
           提交
         </Button>
       </form>

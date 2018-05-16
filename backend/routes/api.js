@@ -31,6 +31,9 @@ router.post('/server/delete', function(req, res, next) {
   server.delServer(req, res);
 });
 
+router.post('/server/modify', function(req, res, next) {
+  server.modifyServer(req, res);
+});
 
 
 module.exports = router;
